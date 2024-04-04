@@ -5,7 +5,6 @@ export default function RowsNumberInput({ value = "", onChange }) {
   const handleInputChange = (event) => {
     const newValue = event.target.value;
     if (!isNaN(newValue)) {
-      // Check if the input is a valid number
       onChange(newValue);
     }
   };

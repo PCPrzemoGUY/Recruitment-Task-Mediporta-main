@@ -1,4 +1,3 @@
-// TagsList.js
 import React, { useContext, useState } from "react";
 import { TagsContext } from "./TagsContext";
 import {
@@ -8,14 +7,12 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
   Container,
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import RowsNumberInput from "./RowsNumberInput";
+import SortField from "./SortField";
+import SortDir from "./SortDir";
 
 const TagsList = () => {
   const { tags, loading, error } = useContext(TagsContext);
@@ -60,32 +57,15 @@ const TagsList = () => {
           value={itemsPerPage}
           onChange={handleItemsPerPageChange}
         />
-        <FormControl sx={{ m: 1, minWidth: 120 }}>
-          <InputLabel id="sort-field-label">Sort field</InputLabel>
-          <Select
-            labelId="sort-field-label"
-            id="field-label"
-            label="Sort field"
-            value={sortField}
-            onChange={handleSortFieldChange}
-          >
-            <MenuItem value="name">Name</MenuItem>
-            <MenuItem value="count">Count</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl sx={{ m: 1, minWidth: 120 }}>
-          <InputLabel id="sort-direction-label">Sort direction</InputLabel>
-          <Select
-            labelId="sort-direction-label"
-            id="direction-label"
-            label="Sort direction"
-            value={sortDirection}
-            onChange={handleSortDirectionChange}
-          >
-            <MenuItem value="asc">Ascending</MenuItem>
-            <MenuItem value="desc">Descending</MenuItem>
-          </Select>
-        </FormControl>
+        <SortField
+          handleSortFieldChange={handleSortFieldChange}
+          sortField={sortField}
+        />
+
+        <SortDir
+          sortDirection={sortDirection}
+          handleSortDirectionChange={handleSortDirectionChange}
+        />
         <TableContainer component={Paper}>
           <Table>
             <TableHead>

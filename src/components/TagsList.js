@@ -51,7 +51,7 @@ const TagsList = () => {
   });
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" sx={{ mt: 4 }}>
       <div id="table-attributes">
         <RowsNumberInput
           value={itemsPerPage}
